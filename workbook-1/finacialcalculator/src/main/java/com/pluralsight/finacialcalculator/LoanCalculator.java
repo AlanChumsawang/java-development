@@ -1,7 +1,8 @@
 package com.pluralsight.finacialcalculator;
 
 import java.util.Scanner;
-
+// -------------------------- //
+// ---  initialize variables ---//
 public class LoanCalculator {
     double principal;
     double interestRate;
@@ -9,7 +10,7 @@ public class LoanCalculator {
     double monthlyPayment;
     double totalInterest;
     double amountRemaining;
-
+// -- Method to calculate monthly payment -- //
     public void calculateMonthlyPayment() {
 
         double monthlyInterestRate = interestRate / 12;
@@ -23,8 +24,6 @@ public class LoanCalculator {
             double interest = amountRemaining * monthlyInterestRate;
             totalInterest += interest;
             amountRemaining = amountRemaining - (monthlyPayment - interest);
-            System.out.println(interest);
-            System.out.println(amountRemaining);
         }
 
     }
