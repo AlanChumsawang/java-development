@@ -1,5 +1,7 @@
 package com.pluralsight.finacialcalculator;
 
+import java.util.Scanner;
+
 public class CdCalculator {
     double deposit;
     double interestRate;
@@ -12,7 +14,6 @@ public class CdCalculator {
         for (int i = 1; i <= years; i++) {
             totalInterest += currentBalance * (interestRate / 100);
             currentBalance += currentBalance * (interestRate / 100);
-            System.out.println(totalInterest);
         }
         futureValue = deposit + totalInterest;
 
@@ -20,11 +21,19 @@ public class CdCalculator {
     }
 
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
         CdCalculator calculator = new CdCalculator();
-        calculator.deposit = 1000;
+
+        System.out.println("Enter the initial investment: ");
+        calculator.deposit = scanner.nextDouble();
         calculator.currentBalance = calculator.deposit;
-        calculator.interestRate = 1.75;
-        calculator.years = 5;
+
+        System.out.println("Enter the interest rate: ");
+        calculator.interestRate = scanner.nextDouble();
+
+        System.out.println("Enter the CD length in years: ");
+        calculator.years = scanner.nextInt();
+
         calculator.findFutureValue();
         System.out.println("Future Value: " + calculator.futureValue);
         System.out.println("Total Interest: " + calculator.totalInterest);
