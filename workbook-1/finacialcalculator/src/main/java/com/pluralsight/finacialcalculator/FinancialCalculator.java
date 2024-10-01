@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class FinancialCalculator {
 
+    //Method to access the annuity calculator
     public void annuityCalculator(Scanner scanner) {
         double presentValue = 0;
         int totalNumberOfPayments = 0;
@@ -30,7 +31,7 @@ public class FinancialCalculator {
                 monthlyPayment = scanner.nextDouble();
                 System.out.println(getTotalNumberOfPayments);
                 totalNumberOfPayments = scanner.nextInt();
-                presentValue = 0; // Reset present value
+                presentValue = 0;
                 for (int i = 1; i <= totalNumberOfPayments; i++) {
                     presentValue += monthlyPayment / (Math.pow(1 + monthlyInterestRate, i));
                 }
@@ -64,6 +65,7 @@ public class FinancialCalculator {
         }
     }
 
+    //Method to access the cd calculator
     public void cdCalculator(Scanner scanner) {
         double deposit;
         double interestRate;
@@ -92,10 +94,11 @@ public class FinancialCalculator {
         System.out.println("Total Interest: " + totalInterest);
     }
 
-    public void loanCalculator(Scanner scanner) {
+    //Method to access the mortgage calculator
+    public void mortgageCalculator(Scanner scanner) {
         double principal;
         double interestRate;
-        int loanLength; // in years
+        int loanLength;
         double monthlyPayment;
         double totalInterest = 0;
         double amountRemaining;
@@ -113,7 +116,6 @@ public class FinancialCalculator {
                 / (Math.pow(1 + monthlyInterestRate, totalNumberOfPayments) - 1);
         amountRemaining = principal;
 
-        // Calculate total interest paid
         for (int i = 1; i < totalNumberOfPayments; i++) {
             double interest = amountRemaining * monthlyInterestRate;
             totalInterest += interest;
@@ -136,7 +138,8 @@ public class FinancialCalculator {
             int calculatorType = scanner.nextInt();
 
             while (calculatorType < 1 || calculatorType > 3) {
-                System.out.println("Invalid input. Please choose a valid calculator:\n1: Annuity Calculator\n2: CD Calculator\n3: Loan Calculator");
+                System.out.println("Invalid input. Please choose a valid calculator:\n1: Annuity Calculator\n" +
+                        "2: CD Calculator\n3: Loan Calculator");
                 calculatorType = scanner.nextInt();
             }
             if (calculatorType == 1) {
@@ -144,7 +147,7 @@ public class FinancialCalculator {
             } else if (calculatorType == 2) {
                 calculator.cdCalculator(scanner);
             } else {
-                calculator.loanCalculator(scanner);
+                calculator.mortgageCalculator(scanner);
             }
 
             System.out.println("Continue calculating? Y/N");
